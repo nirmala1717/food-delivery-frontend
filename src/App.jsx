@@ -3,25 +3,28 @@ import Navbar from './components/Navbar/Navbar'
 import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
-import Footer from './components/footer/footer'
+import Footer from './components/Footer/Footer.jsx'
 import LoginPopup from './components/LoginPopup/LoginPopup'
 import Cart from './pages/Cart/Cart'
+
 const App = () => {
   const [showLogin,setShowLogin] = useState(false)
 
-
   return (
     <>
-    {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
+      {showLogin ? <LoginPopup setShowLogin={setShowLogin}/> : null}
+
       <div className='app'>
-        <Navbar setShowLogin={setShowLogin}></Navbar>
+        <Navbar setShowLogin={setShowLogin} />
+
         <Routes>
-          <Route path='/' element={<Home/>}></Route>
-          {<Route path='/cart' element={<Cart/>}></Route>}
-          {<Route path='/order' element={<PlaceOrder/>}></Route>}
+          <Route path='/' element={<Home/>} />
+          <Route path='/cart' element={<Cart/>} />
+          <Route path='/order' element={<PlaceOrder/>} />
         </Routes>
       </div>
-      <Footer></Footer>
+
+      <Footer />
     </>
   )
 }
